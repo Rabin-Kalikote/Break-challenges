@@ -1,0 +1,62 @@
+<!-- website code -->
+<html>
+
+  <head>
+    <title> Hash Tables </title>
+  </head>
+
+  <body>
+    <br><br>
+    <p>Input any String here..</p>
+    <input type="text" id="input" placeholder="Input any string" value="" style="width:250px; height:40px; border-radius:10px;">
+    <br><br>
+    <p>Click to count the character..</p>
+    <input type="button" id="check" value="Process Checking" onclick="calljs();" style="width:250px; height:40px; border-radius:10px;">
+    <br><br>
+    <p>Here is your result..</p>
+    <textarea id="txtarea" rows="4" cols="30" style="min-width:250px; min-height: 150px"></textarea>
+  </body>
+
+</html>
+
+<!-- js code --> 
+<script type="text/javascript">
+    function calljs(){
+      document.getElementById("txtarea").value = "";
+      var inputString = document.getElementById("input").value;
+
+      var charHold = [];
+      var counts = {}
+
+        var charMatch = 0;
+        var charFound = 0;
+
+      for(var i = 0; i<inputString.length;i++){
+
+            charMatch = 0;
+        var character = inputString.substr(i,1);
+
+        for(var loop = 0; loop<charHold.length;loop++){
+          if(character == charHold[loop]){
+            charMatch++;
+          }
+        }
+
+        if(charMatch == 0){
+          counts[character] = 1;
+          charHold[charFound] = character;
+          charFound++;
+        }
+        else if(charMatch != 0){
+          counts[character]++;
+        }
+
+      }
+
+      document.getElementById("txtarea").value += inputString + "\r\n";
+
+      for(var z = 0; z < charFound; z++){
+        document.getElementById("txtarea").value += charHold[z] + "=" + counts[charHold[z]] + "\r\n";
+      }
+    }
+</script>

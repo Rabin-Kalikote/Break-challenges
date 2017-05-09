@@ -1,0 +1,57 @@
+<!-- website code -->
+<html>
+
+	<head>
+		<title> "Sentence" </title>
+	</head>
+
+	<body>
+    <br><br>
+    <p>Input any String here..</p>
+    <input type="text" id="input" placeholder="Input any string" value="" style="width:250px">
+    <br><br>
+    <p>Click to check the String..</p>
+    <input type="button" id="check" value="Process Checking" onclick="calljs()" style="width:250px">
+    <br><br>
+    <p>Here is your result..</p>
+    <textarea id="txtarea" rows="4" cols="30" style="min-width:250px"></textarea>
+	</body>
+
+</html>
+
+<!-- js code --> 
+<script type="text/javascript">
+    function calljs(){
+      document.getElementById("txtarea").value = "";
+      var inputString = document.getElementById("input").value;
+      var regex1 = /[A-Z][a-z]+[.*?!]/;
+      var result1 = inputString.match(regex1);
+
+      if(result1 == null){
+        var regex2 = /[A-Z][a-z]+[a-z]+[.*?!]/;
+        var result2 = inputString.match(regex2);
+      }
+
+      if(result2 == null){
+        var regex3 = /[A-Z][a-z]+([a-z]+\s)+[a-z]+[.*?!]/;
+        var result3 = inputString.match(regex3);
+      }
+
+      if(result1 != null){
+        document.getElementById("txtarea").value += result1 + "\r\n";
+        document.getElementById("txtarea").value += "It is a Sentence.";
+      }
+      else if (result1 == null && result2 != null){
+        document.getElementById("txtarea").value += result2 + "\r\n";
+        document.getElementById("txtarea").value += "It is a Sentence.";
+      }
+      else if (result2 == null && result3 != null){
+        document.getElementById("txtarea").value += result3 + "\r\n";
+        document.getElementById("txtarea").value += "It is a Sentence.";        
+      }
+      else if(result3 == null){
+        document.getElementById("txtarea").value += result3 + "\r\n";
+        document.getElementById("txtarea").value += "It isn't a Sentence."; 
+      }
+    }
+</script>

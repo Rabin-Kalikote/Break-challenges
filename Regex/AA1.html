@@ -1,0 +1,41 @@
+<!-- website code -->
+<html>
+
+	<head>
+		<title> "AA1" </title>
+	</head>
+
+	<body>
+    <br><br>
+    <p>Input any String here..</p>
+    <input type="text" id="input" value="" style="width:250px">
+    <br><br>
+    <p>Click to check the String..</p>
+    <input type="button" id="check" value="Process Checking" onclick="checkString()" style="width:250px">
+    <br><br>
+    <p>Here is your result..</p>
+    <textarea id="txtarea" rows="4" cols="30" style="min-width:250px"></textarea>
+	</body>
+
+</html>
+
+
+
+<!-- js code --> 
+<script type="text/javascript">
+    function checkString(){
+      document.getElementById("txtarea").value = "";
+      var inputString = document.getElementById("input").value;
+      var regex = /\w\w\d/;
+      var result = inputString.match(regex);
+
+      if(result != null){
+        document.getElementById("txtarea").value += result + "\r\n";
+        document.getElementById("txtarea").value += "The String is followed by 1 numbers after 2 characters.";
+      }
+      else if (result == null){
+        document.getElementById("txtarea").value += result + "\r\n";
+        document.getElementById("txtarea").value += "The String isn't followed by 1 numbers after 2 characters."; 
+      }
+    }
+</script>
