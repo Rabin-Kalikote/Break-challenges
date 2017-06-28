@@ -7,10 +7,10 @@
 
 	<body>
     <br><br>
-    <p>Input any String here..</p>
+    <p>Input any Phone Number here..</p>
     <input type="text" id="input" value="" style="width:250px">
     <br><br>
-    <p>Click to check the String..</p>
+    <p>Click to check the Phone Number..</p>
     <input type="button" id="check" value="Process Checking" onclick="checkString()" style="width:250px">
     <br><br>
     <p>Here is your result..</p>
@@ -26,7 +26,7 @@
     function checkString(){
       document.getElementById("txtarea").value = "";
       var inputString = document.getElementById("input").value;
-      var regex = /[0-9]{10}/;
+      var regex = /^\+?\d{0,3}\s?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}?/;
       var result = inputString.match(regex);
 
       if(result != null){
